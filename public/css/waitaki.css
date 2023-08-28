@@ -1,0 +1,1036 @@
+@charset "UTF-8";
+/* reset */
+body, h1, h2, h3, h4, h5, h6, p, address,
+ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+textarea { font-size: 100%; vertical-align:middle;}
+img { border-style: none; display: block; }
+hr { display: none; }
+em{font-style: normal}
+input{line-height:auto;vertical-align:middle;}
+strong.more{color:#c30}
+a{text-decoration: none;}
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	background-color: white;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@media screen and (max-width:428px) {
+    body {
+        width: 100%;
+        height: 100vh;
+    }
+    /* ログインページ */
+    .Login-Form {
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .main {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        min-height: 100vh;
+    }
+    .main::-webkit-scrollbar{
+        display: none;
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+        width: 100%;
+        margin-top: 4rem;
+    }
+    .big_logo {
+        text-align: center;
+    }
+    .big_logo img {
+        width : 60%;
+        height : 60%;
+        margin: 0 auto;
+    }
+    .login_info {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .login_info form {
+        margin: 0 auto;
+    }
+    .login_info dt {
+        margin-top: 0.5rem;
+    }
+    .login_info dt label {
+        width: 100%;
+        font-size: 1rem;
+    }
+    .login_info dd {
+        margin-inline-start: 0px;
+    }
+    .login_info dd input {
+        width: 100%;
+        height: 3rem;
+        border: 1px solid black;
+        border-radius: 1rem;
+    }
+    .login_btn {
+        position : relative;
+    }
+    .login_btn img {
+        position : absolute;
+        z-index: 1;
+        height : 110%;
+        left: 13rem;
+        bottom: 1px;
+    }
+    .login_btn button {
+        width : 100%;
+        height: 5rem;
+        margin-top: 1rem;
+        font-size: 1.7rem;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+    }
+    .api {
+        margin-top: 1rem;
+    }
+    .api dd input {
+        height: 2rem;
+    }
+    .forget_pass {
+        text-align: center;
+    }
+    .new_account {
+        text-align: center;
+    }
+    .forget_pass {
+        margin-bottom: 1.2rem;
+        margin-top: 1rem;
+    }
+    .forget_pass a {
+        color: blue;
+        font-size: 0.8rem;
+    }
+    .new_account p{
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.8rem;
+    }
+    .new_account a {
+        color: green;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .login_footer {
+        width: 100%;
+        position: absolute;
+        bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        font-size: 0.7rem;
+    }
+    .login_footer a {
+        padding-right: 2rem;
+        padding-left: 2rem;
+        color: blue;
+    }
+    /* 新規アカウント登録ページ */
+    .add_ttl {
+        font-size: 1.3rem;
+        font-weight: bold;
+        padding-bottom: 1rem;
+    }
+    .add_info {
+        width: 90%;
+    }
+    .add_info form {
+        margin: 0 auto;
+        border: 1px solid black;
+        padding: 1rem;
+    }
+    .add_info dt {
+        width: 100%;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+    .add_info dd {
+        margin-inline-start: 0px;
+    }
+    .add_info dd input {
+        width: 100%;
+        height: 2.5rem;
+        border: 1px solid black;
+        border-radius: 1rem;
+    }
+    .add_btn {
+        position : relative;
+    }
+    .add_btn img {
+        position : absolute;
+        z-index: 1;
+        height : 130%;
+        left: 13rem;
+        bottom: 1px;
+    }
+    .add_btn button {
+        width : 100%;
+        height: 5rem;
+        margin-top: 1rem;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+    }
+    .back {
+        margin-top: 1rem;
+    }
+    .back a {
+        color: blue;
+        font-size: 1.3rem;
+    }
+    .add form {
+        border: 1px solid black;
+        padding: 1rem;
+    }
+    /* アカウント新規登録ー入力情報確認ページ */
+    .confirm_info {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .confirm_info form {
+        margin: 0 auto;
+        border: 1px solid black;
+        padding: 1rem;
+    }
+    .confirm_info dt {
+        width: 100%;
+        font-size: 1rem;
+        background-color: rgb(213, 213, 213);
+    }
+    .confirm_info dd {
+        margin-inline-start: 0px;
+        padding-bottom: 1rem;
+        margin: 2% 0;
+        font-size: 1.3rem;
+    }
+    .confirm_info dl {
+        border: 1px solid black;
+        padding: 1rem;
+    }
+    .confirm_info dd input {
+        width: 100%;
+        height: 2.5rem;
+        border: 1px solid black;
+        border-radius: 1rem;
+    }
+    .confirm_btn {
+        position : relative;
+    }
+    .confirm_btn img {
+        position : absolute;
+        z-index: 1;
+        height : 130%;
+        left: 10rem;
+        bottom: 1px;
+    }
+    .confirm_btn button {
+        width : 100%;
+        height: 6rem;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+    }
+    /* パスワード再発行画面 */
+    .forget_ttl span {
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding-bottom: 1rem;
+    }
+    .forget_info {
+        width: 75%;
+    }
+    .forget_info form {
+        margin: 0 auto;
+    }
+    .forget_info dt label {
+        width: 100%;
+        font-size: 1.3rem;
+    }
+    .forget_info dd {
+        margin-inline-start: 0px;
+    }
+    .forget_info dd input {
+        width: 100%;
+        height: 4rem;
+        margin-bottom: 1rem;
+        border: 1px solid black;
+        border-radius: 1rem;
+    }
+    .forget_btn button {
+        width : 100%;
+        height: 8rem;
+        margin-top: 1rem;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+    }
+    .forget_body {
+        width: 80%;
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+    }
+    /* バリデーション */
+    .err_msg {
+        color: red;
+        font-size: 0.8rem;
+    }
+    /* アカウント登録コンプリートページ */
+    .comp_ttl {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding-bottom: 1rem;
+    }
+    .comp_btn {
+        text-align: center;
+    }
+    .comp_btn  button {
+        width : 16rem;
+        height: 6rem;
+        margin-top: 1rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        background-color: white;
+        color: black;
+    }
+    /* 新規お知らせ投稿画面 */
+    .info_button {
+        text-align: right;
+        margin-top: 1rem;
+        position: fixed;
+        right: 10%;
+        border: none;
+    }
+    .info_button button {
+        background-color: rgb(0, 123, 255);
+        color: white;
+        border: none;
+        font-weight: bold;
+        width: 5rem;
+        height: 2.2rem;
+    }
+    .info_err_msg {
+        color: red;
+        font-size: 0.1rem;
+        padding-left: 1rem;
+    }
+    .infoCreated_at {
+        text-align: right;
+        font-size: 0.7rem;
+        position: absolute;
+        right: 1.5rem;
+        top: 3.4rem;
+    }
+    .new_info {
+        background-color: rgb(131, 131, 131);
+        display: flex;
+        height: 100vh;
+        align-items: center;
+    }
+    .new_info form {
+        margin: 0 auto;
+        background-color: white;
+        width: 90%;
+        height: 90%;
+    }
+    .new_info form dd {
+        text-align: center;
+    }
+    .new_info dd input {
+        width: 90%;
+        margin-top: 10%;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+        height: 2rem;
+    }
+    .new_info dd textarea {
+        width: 90%;
+        border-radius: 0.5rem;
+        border: 1px solid black;
+        margin-top: 1rem;
+    }
+    .info_save_button {
+        position: absolute;
+        text-align: right;
+        border: none;
+        right: 2rem;
+        bottom: 4rem;
+    }
+    .info_save_button button {
+        background-color: rgb(0, 123, 255);
+        color: white;
+        border: none;
+        font-weight: bold;
+        width: 5rem;
+        height: 2.2rem;
+        margin-top: 2rem;
+    }
+    .new_info form .back {
+        color: blue;
+        font-size: 1rem;
+        margin-top: 1.4rem;
+        margin-left: 1rem;
+    }
+    .new_info form .back a{
+        font-size: 1rem;
+    }
+    .error_msg {
+        position: fixed;
+        left: 7rem;
+        color: red;
+    }
+    /* お知らせ確認画面 */
+    .new_info_check {
+        background-color: rgb(131, 131, 131);
+        display: flex;
+        height: 100vh;
+        align-items: center;
+    }
+    .new_info_check form {
+        margin: 0 auto;
+        background-color: white;
+        width: 90%;
+        height: 80%;
+        position: relative;
+    }
+    .new_info_check form span {
+        position: absolute;
+        left: 1.5rem;
+        top: 3rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .new_info_check form p {
+        border-top: 1px solid black;
+        padding-top: 1rem;
+        width: 90%;
+        position: absolute;
+        left: 50%;
+        top: 34%;
+        transform: translate(-50%,-50%);
+        font-size: 0.8rem;
+    }
+    .info_check_button {
+        text-align: right;
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        border: none;
+    }
+    .info_check_button button {
+        background-color: rgb(0, 123, 255);
+        color: white;
+        border: none;
+        font-weight: bold;
+        width: 5rem;
+        height: 2.2rem;
+        margin-top: 2rem;
+    }
+    .info_check_button button a{
+        color: white;
+    }
+    .new_info_check form .check_back {
+        color: blue;
+        font-size: 0.9rem;
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+    }
+    .new_info_check form .check_back a{
+        color: blue;
+    }
+    /* ホーム画面 */
+    .information {
+        position: relative;
+        margin-top: 3rem;
+        width: 100%;
+    }
+    table {
+        margin: 0 auto;
+        width: 90%;
+        word-wrap: break-word;
+    }
+    .pagination {
+        justify-content: center;
+        padding-top: 0.8rem;
+    }
+    .newinfo {
+        width: 6%;
+        position: absolute;
+        right: 2rem;
+        bottom: 1rem;
+    }
+    .information table th {
+        padding-bottom: 0.5rem;
+        border-bottom: 0.5px solid #d0d0d0;
+        font-size: 0.8rem;
+        padding-right: 0.5rem;
+    }
+    .information table td {
+        padding: 1rem 2rem 1rem 0;
+        border-bottom: 1px solid #ebebeb;
+        font-size: 0.7rem;
+    }
+    .information table td.detail {
+        padding: 1rem 0 1rem 0;
+        border-bottom: 1px solid #ebebeb;
+        font-size: 0.7rem;
+    }
+    .information table td img{
+        margin-left: auto;
+    }
+    .info_title {
+        width: 60%;
+        word-wrap: break-word;
+    }
+    .information h1 {
+        font-size: 1.0rem;
+        font-weight: bold;
+        width: 90%;
+        margin: 0 auto;
+        border-bottom: 1px solid #c2ddeb;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.2rem;
+    }
+    /* Toggleメニュー */
+    .hamburger-button img {
+        width: 20%;
+        position: absolute;
+        top: 1rem;
+        right: 0;
+        z-index: 91;
+    }
+    .img-open {
+        opacity: 1;
+    }
+        .img-open.active {
+            opacity: 0;
+        }
+    .img-close {
+        opacity: 0;
+    }
+        .img-close.active2 {
+            opacity: 1;
+            filter: invert(1);
+        }
+    .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        transform: translateX(100%); /* メニューを初期状態で画面外に移動 */
+        transition: transform 0.3s ease-in-out; /* トランジションの設定 */
+        z-index: 90;
+    }
+    .menu.open {
+        transform: translateX(0); /* メニューを表示位置に移動 */
+    }
+    .menu ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 6rem;
+    }
+    .menu ul li {
+        padding-top: 23px;
+        text-align: left;
+        margin-right: 3rem;
+        font-weight: bold;
+        padding-left: 3rem;
+    }
+    .menu ul li a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s;
+    }
+    .menu ul li a:hover {
+        color: #007bff;
+    }
+    .menu ul li button {
+        color: white;
+        background: none;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+        padding-left: 0;
+    }
+    /* お知らせページネーション */
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0;
+        justify-content: center;
+    }
+    .pagination li {
+        cursor: pointer;
+        padding: 3px 8px;
+        margin: 0 2px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+    .pagination li.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+    .word_info {
+        width: 90%;
+    }
+    .word_info form {
+        margin: 0 auto;
+        border: 1px solid black;
+        padding: 1rem;
+    }
+    .word_info dt {
+        width: 100%;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+    .word_info dd {
+        margin-inline-start: 0px;
+    }
+    .word_info dd input {
+        width: 100%;
+        height: 2.5rem;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+    .word_info dd textarea {
+        margin-bottom: 1rem;
+    }
+    .word_info dd textarea.ex{
+        height: 4rem;
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+    }
+    .word_info dd textarea.ja_ex{
+        height: 5rem;
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+    }
+    .word_btn button{
+        width: 100%;
+        height: 5rem;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+    }
+    /* 単語一覧ページ */
+    .word-list {
+        position: relative;
+        margin-top: 3rem;
+        width: 100%;
+        overflow: hidden;
+    }
+    .word-list table th {
+        padding-bottom: 0.5rem;
+        border-bottom: 0.5px solid #d0d0d0;
+        font-size: 0.8rem;
+        padding-right: 0.5rem;
+    }
+    .word-list table td {
+        border-bottom: 1px solid #ebebeb;
+        font-size: 0.7rem;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+        padding-right: 0.5rem;
+    }
+    .word-list table td.detail {
+        padding: 1rem 0 1rem 0;
+        border-bottom: 1px solid #ebebeb;
+        font-size: 0.7rem;
+    }
+    .word-list table td img{
+        margin-left: auto;
+    }
+    .info_title {
+        width: 60%;
+        word-wrap: break-word;
+    }
+    .word-list h1 {
+        font-size: 1.0rem;
+        font-weight: bold;
+        width: 90%;
+        margin: 0 auto;
+        border-bottom: 1px solid #c2ddeb;
+        padding-bottom: 2rem;
+        padding-top: 1rem;
+        text-align: center;
+    }
+    .word-list table td.word-edit {
+        padding-right: 0;
+    }
+    .word-list table td.word-edit button {
+        font-size: 0.5rem;
+        border: none;
+        background: #008aff;
+        color: white;
+        font-weight: bold;
+        height: 1.5rem;
+        width: 2.5rem;
+    }
+    .back-word {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+    .back-word a {
+        color: blue;
+        font-size: 1rem;
+        padding-left: 1rem;
+    }
+    .word_info h1 {
+        text-align: center;
+        margin: 1rem;
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+    .save_btn button{
+        width: 100%;
+        height: 5rem;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        font-size: 1.4rem;
+    }
+    .edit-user-back {
+        color: blue;
+        font-size: 1rem;
+    }
+    .new-word {
+        width: 15%;
+        margin-right: 0;
+        margin: auto;
+        margin-right: 2rem;
+    }
+    .test_btn {
+        position: relative;
+        margin: 0 auto;
+        margin-top: 1rem;
+    }
+    .test_btn img {
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        left: 10.7rem;
+        bottom: 1px;
+    }
+    .test_btn button {
+        font-size: 1.1rem;
+        font-weight: bold;
+        background-color: white;
+        color: black;
+        padding: 1.5rem;
+        margin-right: 1rem;
+    }
+    /* 単語テスト機能 */
+    .word-test-box {
+        width: 90%;
+        align-items: center;
+    }
+    .test-box {
+        text-align: center;
+        border: 1px solid black;
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        position: relative;
+    }
+    .test-number {
+        text-align: center;
+        padding-bottom: 1.4rem;
+        font-weight: bold;
+    }
+    .ja-ex{
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    .fortest{
+        text-align: center;
+        font-size: 0.8rem;
+        padding-top: 1.3rem;
+        font-weight: bold;
+    }
+    .test-now {
+        text-align: right;
+        font-size: 0.8rem;
+        position: absolute;
+        right: 1rem;
+        bottom: 0.6rem;
+    }
+    .check {
+        font-size: 0.8rem;
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+    .check2 {
+        font-size: 0.8rem;
+        text-align: center;
+        margin-top: 0.2rem;
+    }
+    .answer-btn {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .answer-btn button{
+        font-size: 1.4rem;
+        width: 45%;
+        height: 4rem;
+        border: none;
+    }
+    .answer-btn button.yes{
+        background-color: #75FFCD;
+        font-weight: bold;
+    }
+    .answer-btn button.no{
+        background-color: #B6B6B6;
+        font-weight: bold;
+    }
+    .interrupt-btn {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+    .interrupt-btn button{
+        border: none;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        width: 50%;
+        height: 3rem;
+    }
+    .users-list {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        min-height: 100vh;
+    }
+    .users-list table th {
+        padding-bottom: 0.5rem;
+        border-bottom: 0.5px solid #d0d0d0;
+        font-size: 0.8rem;
+        padding-right: 0.5rem;
+        padding-top: 0.5rem;
+        font-weight: bold;
+    }
+    .users-list table td {
+        border-bottom: 1px solid #ebebeb;
+        font-size: 0.7rem;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+        padding-right: 0.5rem;
+        word-wrap: break-word;
+        max-width: 8rem;
+    }
+    .users-list table td.detail {
+        padding: 1rem 0 1rem 0;
+        border-bottom: 1px solid #ebebeb;
+        font-size: 0.7rem;
+    }
+    .users-list table td img{
+        margin-left: auto;
+    }
+    .info_title {
+        width: 60%;
+        word-wrap: break-word;
+    }
+    .users-list h1 {
+        font-size: 1.0rem;
+        font-weight: bold;
+        width: 90%;
+        margin: 0 auto;
+        border-bottom: 1px solid #c2ddeb;
+        padding-bottom: 2rem;
+        padding-top: 1rem;
+        text-align: center;
+    }
+    .users-list table td.user-edit {
+        padding-right: 0;
+    }
+    .users-list table td.user-edit button {
+        font-size: 0.5rem;
+        border: none;
+        background: #008aff;
+        color: white;
+        font-weight: bold;
+        height: 1.5rem;
+        width: 2.5rem;
+    }
+    .users-list tbody {
+        width: 80%;
+    }
+    .main-part {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .mylist {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+    }
+    .mylist table th {
+        padding-bottom: 0.5rem;
+        border-bottom: 0.5px solid #d0d0d0;
+        font-size: 0.8rem;
+        padding-right: 0.5rem;
+    }
+    .mylist table td {
+        border-bottom: 1px solid #ebebeb;
+        font-size: 0.7rem;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+        padding-right: 0.5rem;
+    }
+    .mylist table td.detail {
+        padding: 1rem 0 1rem 0;
+        border-bottom: 1px solid #ebebeb;
+        font-size: 0.7rem;
+    }
+    .mylist table td img{
+        margin-left: auto;
+    }
+    .info_title {
+        width: 60%;
+        word-wrap: break-word;
+    }
+    .mylist h1 {
+        font-size: 1.0rem;
+        font-weight: bold;
+        width: 90%;
+        margin: 0 auto;
+        border-bottom: 1px solid #c2ddeb;
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+        text-align: center;
+    }
+    .mylist table td.word-edit {
+        padding-right: 0;
+    }
+    .mylist table td.word-edit button {
+        font-size: 0.5rem;
+        border: none;
+        background: #008aff;
+        color: white;
+        font-weight: bold;
+        height: 1.5rem;
+        width: 2.5rem;
+    }
+    .mylist-test-btn button a {
+        color: white;
+    }
+    .mylist-test-btn {
+        text-align: center;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .mylist-test-btn button{
+        border: none;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        width: 70%;
+        height: 4rem;
+    }
+    .end-test {
+        align-self: center;
+    }
+    .end-test p {
+        text-align: center;
+    }
+    .reset {
+        width: 90%;
+    }
+    .reset h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    .reset p {
+        width: 85%;
+        display: block;
+        margin: 2rem auto;
+        text-align: center;
+    }
+    .reset input {
+        width: 90%;
+        height: 3rem;
+        border-radius: 0.7rem;
+        border: 1px solid black;
+        margin: 1rem auto;
+        display: block;
+        font-size: 1rem;
+    }
+    .reset_btn button {
+        width : 90%;
+        height: 5rem;
+        margin-top: 1rem;
+        font-size: 1.7rem;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        display: block;
+        margin: 1.5rem auto;
+    }
+    #app {
+        min-height: 100vh;
+    }
+    .add-manager {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+    .add-manager-form {
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+        width: 100%;
+    }
+}
