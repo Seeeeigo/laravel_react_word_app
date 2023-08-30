@@ -9,6 +9,8 @@ const Infos = () => {
     const [infos, setInfos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 3; // 1ページあたりの情報数
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const [user, setUser] = useState(null);
 
     function formatDate(dateString) {
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -24,6 +26,34 @@ const Infos = () => {
     };
 
     useEffect(() => {
+        const accessToken = localStorage.getItem('access_token');
+        if (accessToken) {
+            // サーバーサイドにaccess_tokenを送信してログイン状態を確認
+            axios.post('/api/check-login', {}, {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => {
+                if (response.data.loggedIn) {
+                    setUserLoggedIn(true);
+                } else {
+                    setUserLoggedIn(false);
+                }
+            })
+            .catch(error => {
+                // エラーハンドリング
+                console.log('ログイン状態確認中にエラーが起きました');
+            });
+            fetch('/user', {
+                method: 'GET',
+                credentials: 'include' // 認証情報を送信
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setUser(data.user);
+                });
+        }
         getInfosData();
     }, []);
 
@@ -75,9 +105,13 @@ const Infos = () => {
                             <Link to={`/info/${info.id}`} onClick={() => handleInfoClick(info.id)}>
                                 <img src="/img/right.png" alt="詳細を表示" />
                             </Link>
+                            {user && user.status === 2 ? 
                             <Link to="/create-info">
                                 <img src="/img/info.png" className="newinfo"/>
                             </Link>
+                            : 
+                            <></>
+                            }
                             </td>
                         </tr>
                     ))}
@@ -92,9 +126,6 @@ const Infos = () => {
                     onPageChange={handlePageChange}
                 />
             </div>
-            {/* @if (Auth::user()->status == 2)
-                <a href="{{ route('newInfo') }}"><img src="/img/info.png" class="newinfo"></a>
-            @endif */}
         </div>
     );
 };

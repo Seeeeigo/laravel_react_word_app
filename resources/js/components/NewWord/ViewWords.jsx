@@ -84,20 +84,28 @@ const Words = () => {
                             <td>No.{word.num}</td>
                             <td>{word.ja}</td>
                             <td>{word.en}</td>
-                            <td className="word-edit">
-                                <Link to={`/word/${word.id}`} onClick={() => handleWordClick(word.id)}>
-                                    <button>編集</button>
-                                </Link>
-                            </td>
+                            {user && user.status === 2 ? 
+                                <td className="word-edit">
+                                    <Link to={`/word/${word.id}`} onClick={() => handleWordClick(word.id)}>
+                                        <button>編集</button>
+                                    </Link>
+                                </td>
+                            : 
+                            <td></td>
+                            }
                         </tr>
                     ))}
                 </tbody>
             </table>
             <div className="back-word">
                 <a onClick={handleBack}>↩︎戻る</a>
+                {user && user.status === 2 ? 
                 <Link to="/create-new-word">
                     <img src="/img/info.png" className="new-word"/>
                 </Link>
+                : 
+                <></>
+                }
             </div>
         </div>
     )

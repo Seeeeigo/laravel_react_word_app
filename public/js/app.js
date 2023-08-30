@@ -6249,6 +6249,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Infos = function Infos() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -6259,7 +6260,14 @@ var Infos = function Infos() {
     currentPage = _useState4[0],
     setCurrentPage = _useState4[1];
   var itemsPerPage = 3; // 1ページあたりの情報数
-
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    userLoggedIn = _useState6[0],
+    setUserLoggedIn = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    user = _useState8[0],
+    setUser = _useState8[1];
   function formatDate(dateString) {
     var options = {
       year: 'numeric',
@@ -6275,6 +6283,32 @@ var Infos = function Infos() {
     setCurrentPage(pageNumber);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var accessToken = localStorage.getItem('access_token');
+    if (accessToken) {
+      // サーバーサイドにaccess_tokenを送信してログイン状態を確認
+      axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/check-login', {}, {
+        headers: {
+          'Authorization': "Bearer ".concat(accessToken)
+        }
+      }).then(function (response) {
+        if (response.data.loggedIn) {
+          setUserLoggedIn(true);
+        } else {
+          setUserLoggedIn(false);
+        }
+      })["catch"](function (error) {
+        // エラーハンドリング
+        console.log('ログイン状態確認中にエラーが起きました');
+      });
+      fetch('/user', {
+        method: 'GET',
+        credentials: 'include' // 認証情報を送信
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        setUser(data.user);
+      });
+    }
     getInfosData();
   }, []);
 
@@ -6301,10 +6335,10 @@ var Infos = function Infos() {
     };
   }();
   // 詳細情報を表示するためのステート
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState6 = _slicedToArray(_useState5, 2),
-    selectedInfo = _useState6[0],
-    setSelectedInfo = _useState6[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState10 = _slicedToArray(_useState9, 2),
+    selectedInfo = _useState10[0],
+    setSelectedInfo = _useState10[1];
   var handleInfoClick = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(infoId) {
       var response;
@@ -6371,13 +6405,13 @@ var Infos = function Infos() {
                   src: "/img/right.png",
                   alt: "\u8A73\u7D30\u3092\u8868\u793A"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+              }), user && user.status === 2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                 to: "/create-info",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
                   src: "/img/info.png",
                   className: "newinfo"
                 })
-              })]
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {})]
             })]
           }, info.id);
         })
@@ -7807,6 +7841,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Words = function Words() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -7921,7 +7956,7 @@ var Words = function Words() {
               children: word.ja
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               children: word.en
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            }), user && user.status === 2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               className: "word-edit",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
                 to: "/word/".concat(word.id),
@@ -7932,7 +7967,7 @@ var Words = function Words() {
                   children: "\u7DE8\u96C6"
                 })
               })
-            })]
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {})]
           }, word.id);
         })
       })
@@ -7941,13 +7976,13 @@ var Words = function Words() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
         onClick: handleBack,
         children: "\u21A9\uFE0E\u623B\u308B"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+      }), user && user.status === 2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
         to: "/create-new-word",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: "/img/info.png",
           className: "new-word"
         })
-      })]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {})]
     })]
   });
 };
