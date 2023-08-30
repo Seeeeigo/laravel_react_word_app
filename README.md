@@ -1,61 +1,44 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 単語学習が効果的にできるwebSPA(PHP,ReactJS)
+php自作で作成した、SPAです。
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 概要
+全300個(現時点)の単語を、脳科学に根拠を置いた学習方法で、効率よく学習できるWebアプリケーション。単語学習機能は全ユーザーが無料で使用できます。
+主なメイン機能として、ユーザーが自身のマイ単語帳を作成でき、そのマイ単語帳のみのテストも実施できます。現在は無料ユーザーと管理者ユーザーの2種類が存在し、どちらのアカウントでもログイン可能で利用できる機能が分かれています。主にスマートフォンで使用することを前提としているので、スマホサイズでご覧ください。
 
-## About Laravel
+## 使い方
+**管理者ユーザー**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+①以下のサンプルアカウントでログイン
+- email - sample@gmail.com
+- password - test1234A
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+②右上のメニューから以下の機能が使用できます
+- 管理者アカウントの追加
+- 単語の追加、編集
+- お知らせ投稿、編集
+- 登録者一覧表示、編集
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**一般ユーザー**
 
-## Learning Laravel
+①以下のサンプルアカウントでログイン
+- email - test@test.com
+- password - test1234A
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+②右上のメニューから以下の機能が使用できます
+- 単語リスト一覧表示
+- 単語テストの実施
+- マイ単語帳への追加
+- マイページの編集
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+③単語テストの使い方
+- 1, 表示されている単語を一瞬で回答できたらYES,そうでなければNOボタンを押します
+- 2, NOを押した単語は自動でマイ単語帳に登録されます
+- 3, 中断ボタンをタップすると、その位置を記憶して次回は中断した位置から開始します
+- 4, マイリストで復習をしながら、マイリストの単語のみのテストを実施します
+- 5, マイリストテストでYESが押されたものはマイリストから削除されます
 
-## Laravel Sponsors
+## 環境
+MAMP/MySQL/PHP
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## データベース
+データベース名：waitaki
